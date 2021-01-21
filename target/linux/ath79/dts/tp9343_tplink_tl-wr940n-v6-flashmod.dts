@@ -1,0 +1,97 @@
+// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
+/dts-v1/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+#include "qca956x.dtsi"
+
+/ {
+	leds {
+		compatible = "gpio-leds";
+
+		wan_blue {
+			label = "tp-link:blue:wan";
+			gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
+		};
+
+		led_diag_orange: diag_orange {
+			label = "tp-link:orange:diag";
+			gpios = <&gpio 15 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+		};
+	};
+
+	keys {
+		compatible = "gpio-keys";
+
+		wifi_button {
+			label = "WiFi button";
+			linux,code = <KEY_RFKILL>;
+			gpios = <&gpio 2 GPIO_ACTIVE_LOW>;
+		};
+
+		reset_button {
+			label = "Reset button";
+			linux,code = <KEY_RESTART>;
+			gpios = <&gpio 1 GPIO_ACTIVE_LOW>;
+		};
+	};
+
+	aliases {
+		led-boot = &led_diag_orange;
+		led-failsafe = &led_diag_orange;
+		led-running = &led_diag_orange;
+		led-upgrade = &led_diag_orange;
+	};
+};
+
+&uart {
+	status = "okay";
+};
+
+&spi {
+	status = "okay";
+
+	num-cs = <1>;
+
+	flash@0 {
+		compatible = "jedec,spi-nor";
+		reg = <0>;
+		spi-max-frequency = <25000000>;
+
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			uboot:	partition@0 {
+				label = "u-boot";
+				reg = <0x000000 0x020000>;
+				read-only;
+			};
+		};
+	};
+};
+
+&eth0 {
+	status = "okay";
+
+	phy-handle = <&swphy4>;
+
+	mtd-mac-address = <&uboot 0x1fc00>;
+	mtd-mac-address-increment = <1>;
+};
+
+&eth1 {
+	status = "okay";
+
+	mtd-mac-address = <&uboot 0x1fc00>;
+};
+
+&wmac {
+	status = "okay";
+
+	mtd-cal-data = <&art 0x1000>;
+	mtd-mac-address = <&uboot 0x1fc00>;
+};

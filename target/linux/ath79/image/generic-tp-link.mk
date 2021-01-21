@@ -363,6 +363,32 @@ define Device/tplink_tl-wr842n-v3
 endef
 TARGET_DEVICES += tplink_tl-wr842n-v3
 
+define Device/tplink_tl-wr940n-v6-8m
+  $(Device/tplink-8mlzma)
+  ATH_SOC := tp9343
+  DEVICE_TITLE := TP-Link TL-WR940N v6 (8M)
+  TPLINK_HWID := 0x09400006
+  SUPPORTED_DEVICES += tl-wr940n-v6-8m
+  IMAGES += factory-us.bin factory-eu.bin factory-br.bin
+  IMAGE/factory-us.bin := append-rootfs | mktplinkfw factory -C US
+  IMAGE/factory-eu.bin := append-rootfs | mktplinkfw factory -C EU
+  IMAGE/factory-br.bin := append-rootfs | mktplinkfw factory -C BR
+endef
+TARGET_DEVICES += tplink_tl-wr940n-v6-8m
+
+define Device/tplink_tl-wr940n-v6-16m
+  $(Device/tplink-16mlzma)
+  ATH_SOC := tp9343
+  DEVICE_TITLE := TP-Link TL-WR940N v6 (16M)
+  TPLINK_HWID := 0x09400006
+  SUPPORTED_DEVICES += tl-wr940n-v6-16m
+  IMAGES += factory-us.bin factory-eu.bin factory-br.bin
+  IMAGE/factory-us.bin := append-rootfs | mktplinkfw factory -C US
+  IMAGE/factory-eu.bin := append-rootfs | mktplinkfw factory -C EU
+  IMAGE/factory-br.bin := append-rootfs | mktplinkfw factory -C BR
+endef
+TARGET_DEVICES += tplink_tl-wr940n-v6-16m
+
 define Device/tplink_tl-wr1043nd-v1
   $(Device/tplink-8m)
   ATH_SOC := ar9132
