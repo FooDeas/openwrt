@@ -1,3 +1,4 @@
+#!/bin/bash
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 echo "# Setting config..."
@@ -15,6 +16,7 @@ CONFIG_PACKAGE_luci=y
 CONFIG_PACKAGE_luci-theme-openwrt=y
 CONFIG_PACKAGE_wpad-openssl=y
 CONFIG_PACKAGE_mosquitto-ssl=y
+CONFIG_PACKAGE_pimbd=y
 # Enable menus
 CONFIG_DEVEL=y
 CONFIG_IMAGEOPT=y
@@ -24,4 +26,4 @@ CONFIG_INCLUDE_CONFIG=y
 CONFIG_VERSION_FILENAMES=y
 CONFIG_COLLECT_KERNEL_DEBUG=n" > .config
 make defconfig && ./scripts/diffconfig.sh | tee .config.diff
-time make -j12
+time make -j32
