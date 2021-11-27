@@ -72,6 +72,10 @@ ath79_setup_interfaces()
 	tplink,re450-v1|\
 	tplink,re450-v2|\
 	tplink,re450-v3|\
+	tplink,tl-wr841-v9-8m|\
+	tplink,tl-wr841-v9-16m|\
+	tplink,tl-wr841-v11-8m|\
+	tplink,tl-wr841-v11-16m|\
 	tplink,tl-wr902ac-v1|\
 	ubnt,bullet-ac|\
 	ubnt,bullet-m-ar7240|\
