@@ -10,9 +10,12 @@ CONFIG_TARGET_DEVICE_ath79_generic_DEVICE_tplink_tl-wr841-v11-16m=y
 CONFIG_TARGET_DEVICE_ath79_generic_DEVICE_tplink_tl-wr841-v9-16m=y
 # Add packages
 CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_wpad=y
 CONFIG_PACKAGE_relayd=y
 CONFIG_PACKAGE_luci-proto-relay=y
-CONFIG_PACKAGE_wpad=y
+CONFIG_PACKAGE_travelmate=y
+CONFIG_PACKAGE_qrencode=y
+CONFIG_PACKAGE_luci-app-travelmate=y
 # Remove packages:
 CONFIG_PACKAGE_wpad-mini=n
 # Enable menus
@@ -21,7 +24,7 @@ CONFIG_IMAGEOPT=y
 CONFIG_VERSIONOPT=y
 # Build options
 CONFIG_STRIP_KERNEL_EXPORTS=y
-CONFIG_USE_MKLIBS=y
+CONFIG_KERNEL_KALLSYMS=n
 CONFIG_CCACHE=y
 CONFIG_VERSION_FILENAMES=y" > .config
 make defconfig && ./scripts/diffconfig.sh > .config.diff
