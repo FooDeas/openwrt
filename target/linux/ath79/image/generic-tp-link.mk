@@ -798,6 +798,32 @@ define Device/tplink_tl-wr841-v9-16m
 endef
 TARGET_DEVICES += tplink_tl-wr841-v9-16m
 
+define Device/tplink_tl-wr841-v11-8m
+  $(Device/tplink-8mlzma)
+  SOC := qca9533
+  DEVICE_MODEL := TL-WR841N/ND
+  DEVICE_VARIANT := v11 (8M)
+  TPLINK_HWID := 0x08410011
+  SUPPORTED_DEVICES += tl-wr841n-v11-8m
+  IMAGES += factory-us.bin factory-eu.bin
+  IMAGE/factory-us.bin := tplink-v1-image factory -C US
+  IMAGE/factory-eu.bin := tplink-v1-image factory -C EU
+endef
+TARGET_DEVICES += tplink_tl-wr841-v11-8m
+
+define Device/tplink_tl-wr841-v11-16m
+  $(Device/tplink-16mlzma)
+  SOC := qca9533
+  DEVICE_MODEL := TL-WR841N/ND
+  DEVICE_VARIANT := v11 (16m)
+  TPLINK_HWID := 0x08410011
+  SUPPORTED_DEVICES += tl-wr841n-v11-16m
+  IMAGES += factory-us.bin factory-eu.bin
+  IMAGE/factory-us.bin := tplink-v1-image factory -C US
+  IMAGE/factory-eu.bin := tplink-v1-image factory -C EU
+endef
+TARGET_DEVICES += tplink_tl-wr841-v11-16m
+
 define Device/tplink_tl-wr841hp-v2
   $(Device/tplink-8mlzma)
   SOC := ar9344

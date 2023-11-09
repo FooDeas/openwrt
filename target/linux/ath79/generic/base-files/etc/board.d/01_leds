@@ -349,6 +349,8 @@ tplink,archer-c6-v2-us)
 tplink,archer-c25-v1|\
 tplink,tl-wr841-v9-8m|\
 tplink,tl-wr841-v9-16m|\
+tplink,tl-wr841-v11-8m|\
+tplink,tl-wr841-v11-16m|\
 tplink,tl-wr842n-v3)
 	ucidef_set_led_netdev "wan" "WAN" "green:wan" "eth1"
 	ucidef_set_led_switch "lan1" "LAN1" "green:lan1" "switch0" "0x10"
