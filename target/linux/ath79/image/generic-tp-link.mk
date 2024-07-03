@@ -858,6 +858,28 @@ define Device/tplink_tl-wr810n-v2
 endef
 TARGET_DEVICES += tplink_tl-wr810n-v2
 
+define Device/tplink_tl-wr841-v9_common
+  SOC := qca9533
+  DEVICE_MODEL := TL-WR841N/ND v9
+  TPLINK_HWID := 0x08410009
+endef
+
+define Device/tplink_tl-wr841-v9-8m
+  $(Device/tplink_tl-wr841-v9_common)
+  $(Device/tplink-8mlzma)
+  DEVICE_VARIANT := (8M)
+  SUPPORTED_DEVICES += tl-wr841n-v9-8m
+endef
+TARGET_DEVICES += tplink_tl-wr841-v9-8m
+
+define Device/tplink_tl-wr841-v9-16m
+  $(Device/tplink_tl-wr841-v9_common)
+  $(Device/tplink-16mlzma)
+  DEVICE_VARIANT := (16M)
+  SUPPORTED_DEVICES += tl-wr841n-v9-16m
+endef
+TARGET_DEVICES += tplink_tl-wr841-v9-16m
+
 define Device/tplink_tl-wr841hp-v2
   $(Device/tplink-8mlzma)
   SOC := ar9344
